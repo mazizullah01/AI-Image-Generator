@@ -27,21 +27,20 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  return ( 
-  <ThemeProvider theme={darkTheme}>
-    <Container>
-     <Navbar />
-      <Wrapper>
-        <BrowserRouter> 
-       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/create-post" element={<CreatePost />} />
-      </Routes>
-        </BrowserRouter>
-      </Wrapper>
-    </Container>
-  </ThemeProvider>
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <Container>
+        <Navbar />
+        <Wrapper>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create-post" element={<CreatePost />} />
+          </Routes>
+        </Wrapper>
+      </Container>
+    </ThemeProvider>
   );
 }
+
 
 export default App;
