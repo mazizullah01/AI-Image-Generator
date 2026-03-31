@@ -3,13 +3,57 @@ import styled from "styled-components"
 import { LazyLoadImage } from "react-lazy-load-image-component"; 
 
 const Card = styled.div`
-
+    position: relative;
+    display: flex;
+    border-radius: 20px;
+    box shadow: 1px 2px 40px 8px ${({ theme }) => theme.black + 60};
+    cursor: pointer;
+    transition: all 0.3 ease;
+    &hover {
+        box shadow: 1px 2px 40px 8px ${({ theme }) => theme.black + 80};
+        scale: 1.05
+    }
+    &:nth-child(7n + 1) {
+    grid-column: auto/span 2;
+    grid-row: auto/span 2;
+    }
 `;
+
+
+const HoverOverlay = styled.div`
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-item: start;
+    gap: 2px;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0,0.5);
+    color: ${({ theme }) => theme.white};
+    transition: opacity 0.3s ease;
+
+    ${Card}:hover & {
+    opacity: 1;
+    }
+`;
+const Prompt = styled.div``;
+const Author = styled.div``;
+
 
 const ImageCard = () => {
     return (
         <Card>
-            <LazyLoadImage src="https://wwhttps://www.google.com/imgres?q=images&imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Flavender-field-sunset-near-valensole_268835-3910.jpg%3Fsemt%3Dais_incoming%26w%3D740%26q%3D80&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Flandscape&docid=rckQF1DyREyoYM&tbnid=5FRPWIYpd4hbrM&vet=12ahUKEwiy_JyUkMWTAxW5NfsDHaZpJIoQnPAOegQIGxAB..i&w=740&h=493&hcb=2&ved=2ahUKEwiy_JyUkMWTAxW5NfsDHaZpJIoQnPAOegQIGxABw.google.com/imgres?q=images&imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Flavender-field-sunset-near-valensole_268835-3910.jpg%3Fsemt%3Dais_incoming%26w%3D740%26q%3D80&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Flandscape&docid=rckQF1DyREyoYM&tbnid=5FRPWIYpd4hbrM&vet=12ahUKEwiy_JyUkMWTAxW5NfsDHaZpJIoQnPAOegQIGxAB..i&w=740&h=493&hcb=2&ved=2ahUKEwiy_JyUkMWTAxW5NfsDHaZpJIoQnPAOegQIGxAB"/>
+            <LazyLoadImage 
+                width="100%"
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Dogs_love.jpg" />
+            <HoverOverlay>
+                <Prompt>Prompt</Prompt>
+                <Author>Aziz</Author>
+            </HoverOverlay>
         </Card>
     )
 }
