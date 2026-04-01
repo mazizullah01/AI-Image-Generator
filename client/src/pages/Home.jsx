@@ -65,6 +65,11 @@ const CardWrapper = styled.div`
 `;
 
 const  Home = () => {
+  const item = {
+    photo: "",
+    author:"",
+    prompt:"",
+  }
   return (
   <Container>
     <Headline>
@@ -74,7 +79,10 @@ const  Home = () => {
     <SearchBar />
     <Wrapper>
       <CardWrapper>
-        <ImageCard />
+         <ImageCard item={{
+          photo:
+          "https://upload.wikimedia.org/wikipedia/commons/e/e4/Dogs_love.jpg"
+          }}/>
          <ImageCard />
          <ImageCard />
          <ImageCard />
