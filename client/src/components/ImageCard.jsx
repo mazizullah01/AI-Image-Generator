@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Avatar from "@mui/material/Avatar";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import { FileSaver } from "file-saver";
+import FileSaver from "file-saver";
 
 const Card = styled.div`
     position: relative;
@@ -65,9 +65,11 @@ const ImageCard = ({item}) => {
     return (
         <Card>
             <LazyLoadImage 
+                alt={item?.prompt}
+                style={{ borderRadius: "12px" }}
                 width="100%" src={item?.photo} />
             <HoverOverlay>
-                <Prompt>{item?.Prompt}</Prompt>
+                <Prompt>{item?.prompt}</Prompt>
                 <div style={{
                     width: "100",
                     display: "flex",

@@ -2,7 +2,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Theme";
 import Home from "./pages/Home";
 import CreatePost from "./pages/CreatePost"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
 
 const Container = styled.div`
@@ -34,7 +34,7 @@ function App() {
         <Wrapper>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/post" element={<CreatePost />} />
           </Routes>
         </Wrapper>
       </Container>
