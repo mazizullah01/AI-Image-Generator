@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import GenerateImageForm from "../components/GenerateImageForm";
+import GeneratedImageCard from "../components/GeneratedImageCard";
 
 const Container = styled.div`
   height: 100%;
@@ -19,7 +20,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  flex: 1;
+  width: 100%;
   height: fit-content;
   max-width: 1200px;
   gap: 8%;
@@ -35,6 +36,7 @@ const CreatePost = () => {
     <Container>
     <Wrapper>
       <GenerateImageForm /> 
+      <GeneratedImageCard loading/>
      </Wrapper>
     </Container>
   );

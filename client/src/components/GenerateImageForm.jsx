@@ -58,6 +58,7 @@ const GenerateImageForm = () => {
                 rows="8"
                 textArea
                 />
+                ** You can post the AI Generated Image to the Community **
             </Body>
             <Action>
                 <Button text="Generate Imaage" flex leftIcon={<AutoAwesome />}/>
