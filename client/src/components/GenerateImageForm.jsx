@@ -51,7 +51,12 @@ const GenerateImageForm = ({
        generateImageLoading,
        setCreatePostLoading,
      }) => {
-    
+        const generateImageFun = () => {
+            setGenerateImageLoading(true);
+        };
+        const CreatePostFun = () => {
+            setCreatePostLoading(true);
+        };
     return (
         <Form>
             <Top>
@@ -85,13 +90,15 @@ const GenerateImageForm = ({
                  flex leftIcon={<AutoAwesome />}
                  isLoading={generateImageLoading}
                  isDisabled={post.prompt === "" }
+                 onClick={() => generateImageFun()}
                  />
                 <Button 
                  text="Post Image"
                  flex type="secondary" leftIcon={<CreateRounded />}
                  isLoading={createPostLoading}
                  isDisabled={post.name === "" || post.prompt === "" || post.photo === ""}
-                 />
+                onClick={() => CreatePostFun()}
+                />
 
             </Action>
         </Form>
