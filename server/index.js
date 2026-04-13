@@ -3,7 +3,7 @@ import express from 'express'
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 
-dotenv.config;
+dotenv.config();
 
 const app = express();
 app.use(cors());
