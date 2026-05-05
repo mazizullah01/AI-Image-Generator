@@ -3,6 +3,7 @@ import express from 'express'
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import PostRouter from "./routes/Posts.js";
+import  GenerateImageRouter  from "./routes/GenerateImage.js";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json({limit: "50mb"}));
 app.use(express.urlencoded({extended: true}));
 
 app.use("/api/post", PostRouter);
+app.use("/api/generateImage", GenerateImageRouter);
 
 //Default get
 app.get("/", async (req, res) => {

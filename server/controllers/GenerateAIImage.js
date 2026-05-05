@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
-import { createError } from "../error";
-import { Configuration, OpenAIApi } from "openai";import { response } from "express";
+import { createError } from "../error.js";
+import { Configuration, OpenAIApi } from "openai";
+import { response } from "express";
 
 dotenv.config();
 
@@ -20,9 +21,10 @@ export const generateImage = async (req, res ,next) => {
             prompt,
             n: 1,
             size: "1024x1024",
-            response_format: "b64json",
+            response_format: "b64_json",
         });
-        const generateImage = response.data.data[0].b64_jason;
+        const generatedImage = response.data.data[0].b64_json;
+        return res.status(200).json({ photo: generatedImage });
     } catch (error) {
         next(
             createError(
