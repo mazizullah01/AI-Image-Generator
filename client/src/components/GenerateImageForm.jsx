@@ -14,7 +14,7 @@ const Form = styled.div`
     display: flex;
     flex-direction: column;
     gap: 9%;
-    justify-content: center;
+    justify-content: center; 
 `;
 const Top= styled.div`
     display: flex;
@@ -73,6 +73,7 @@ const GenerateImageForm = ({
              await CreatePost (post).then((res) =>{
                 setPost({...post, photo: `data:image/jpge;base64,${res?.data?.photo}`});
                 setCreatePostLoading(false);
+                navigate("/");
             })
             .catch((error) => {
                 setError(error?.response?.data?.message);

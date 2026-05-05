@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import SearchBar from "../components/SearchBar";
 import ImageCard from "../components/ImageCard";
+import { useState, } from "react";
+import { CircularProgress } from "@mui/material";
+import { GetPosts } from "../api";
 
 const Container = styled.div`
   height: 100%;
@@ -65,32 +68,73 @@ const CardWrapper = styled.div`
 `;
 
 const  Home = () => {
-  const item = {
-    photo: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Dogs_love.jpg",
-    author:"Aziz",
-    prompt:"HEY Prompt!",
-  }
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+  const getPosts = async () => {
+    setLoading(true);
+    await GetPosts().then((res) => {
+      setLoading(false);
+      setPosts(res?.data?.data); 
+      setFilteredPosts(res?.data?.data);
+    })
+      .catch((error) => {
+       setError(error?.response?.data?.message);
+       setLoading(false);
+     });
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  //Search
+  useEffect(() => {
+    if(!search) {
+      setFilteredPosts(posts);
+    }
+
+    const SearchFilteredPosts = posts.filter((post) => {
+      const promptMatch = post?.prompt?.toLowerCase().includes(search.toString().toLowerCase());
+      const authorMatch = post?.name?.toLowerCase().includes(search.toString().toLowerCase());
+
+      return promptMatch || authorMatch;
+    });
+    if(search) {
+      setFilteredPosts(SearchFilteredPosts);
+    }
+  }, [posts, search])
   return (
   <Container>
     <Headline>
       Explore popular posts in the community!
       <Span>⦿ Generated with AI ⦿</Span>
     </Headline>
-    <SearchBar />
+    <SearchBar search={search} setSearch={setSearch}/>
     <Wrapper>
+      {error && <div style={{ color: "red" }}>{error}</div>}
+      {loading ? (
+        <CircularProgress />
+      ) : (
       <CardWrapper>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
-         <ImageCard item={item}/>
+      {filteredPosts.length === 0 ? (
+        <>No Post Found</> 
+      ) : (
+      <>
+        {filteredPosts
+        .slice()
+        .reverse()
+        .map((item, index) => (
+          <ImageCard key={index} item={item} />
+        ))
+        }
+      </>
+      )}
       </CardWrapper>
+)}
     </Wrapper>
   </Container>
   );
