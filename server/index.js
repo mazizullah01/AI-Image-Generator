@@ -45,14 +45,6 @@ const connectDB = () => {
     });
 };
 
-//Function to sstart the server
-const startServer = async () => {
-    try{
-        connectDB();
-        app.listen(9090, () => console.log("Server started on port 9090"));
-    } catch (error) {
-        console.log(error);
-    }
-};
+connectDB();
 
-startServer();
+export default app;
