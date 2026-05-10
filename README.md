@@ -3,6 +3,21 @@
 **AI Image Generator** An AI-powered image generation web app built using the **MERN stack** (MongoDB, Express, React, Node.js).
 This project allows users to generate images from text prompts using AI models.
 
+---
+
+## 🖼️ Screenshots
+
+### Home Page
+![Home Page](readme-images/home.png)
+
+### Create Image Page
+![Create Image Page](readme-images/create-image-page.png)
+
+### User Profile
+![Hover Preview](readme-images/hover-perview.png)
+
+---
+
 ### Frontend
 - React.js
 
