@@ -13,7 +13,7 @@ This project allows users to generate images from text prompts using AI models.
 ### Create Image Page
 ![Create Image Page](readme-images/create-image-page.png)
 
-### User Profile
+### Hover Preview
 ![Hover Preview](readme-images/hover-perview.png)
 
 ---
