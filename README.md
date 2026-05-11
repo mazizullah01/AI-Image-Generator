@@ -65,6 +65,5 @@ npm start
 
 ---
 
-## 📌 Status
-✅ Project completed and successfully deployed on Vercel.
-🌐 Live Demo: https://ai-image-generator-hnx1-j3gu18aia-muhammad-azizullah-s-projects.vercel.app
+### 🌐 Live Demo: 
+https://ai-image-generator-hnx1-j3gu18aia-muhammad-azizullah-s-projects.vercel.app
