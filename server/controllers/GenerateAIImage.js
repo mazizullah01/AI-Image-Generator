@@ -23,9 +23,11 @@ export const generateImage = async (req, res ,next) => {
             size: "1024x1024",
             response_format: "b64_json",
         });
+        // Send the generated image back to the client
         const generatedImage = response.data.data[0].b64_json;
         return res.status(200).json({ photo: generatedImage });
     } catch (error) {
+        // Forward errors to the Express error-handling middleware
         next(
             createError(
                 error.status,
